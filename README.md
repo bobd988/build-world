@@ -1,57 +1,30 @@
 
-### Directory Structure
-```
-    .myrobot                           # myrobot lab main folder 
-    ├── images                         # Code output image                   
-    │   ├── output.png
-    ├── model                          # Model files of the two-wheeled robot
-    │   ├── robot
-    │   │   ├── model.config
-    │   │   ├── model.sdf
-    ├── script                         # Gazebo World plugin C++ script      
-    │   ├── hello.cpp
-    ├── world                          # Gazebo main World empty scene
-    │   ├── myworld
-    ├── CMakeLists.txt                 # Link libraries 
-    └──                              
-```
 
 ### Steps to launch the simulation
+#### Step 1 Clone the folder in /home/workspace/
 
-#### Step 1 Update and upgrade the Workspace image
+#### Step 2 Compile the code
 ```sh
-$ sudo apt-get update
-$ sudo apt-get upgrade -y
-```
-
-#### Step 2 Clone the lab folder in /home/workspace/
-```sh
-$ cd /home/workspace/
-$ git clone https://github.com/udacity/RoboND-myrobot myrobot
-```
-
-#### Step 3 Compile the code
-```sh
-$ cd /home/workspace/myrobot/
+$ cd /home/workspace/build-world/
 $ mkdir build
 $ cd build/
 $ cmake ../
 $ make
 ```
 
-#### Step 4 Add the library path to the Gazebo plugin path  
+#### Step 3 Add the library path to the Gazebo plugin path  
 ```sh
-$ export GAZEBO_PLUGIN_PATH=${GAZEBO_PLUGIN_PATH}:/home/workspace/myrobot/build
+$ export GAZEBO_PLUGIN_PATH=${GAZEBO_PLUGIN_PATH}:/home/workspace/build-world/build
 ```
 
-#### Step 5 Run the Gazebo World file  
+#### Step 4 Run the Gazebo World file  
 ```sh
-$ cd /home/workspace/myrobot/world/
+$ cd /home/workspace/build-world/world/
 $ gazebo myworld
 ```
 
 ### Output
-The hello world message and the two-wheeled robot inside a Gazebo World should both launch.
+The welcome world message in console and a Gazebo World should both launch.
 
 
     
