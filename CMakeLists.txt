@@ -1,28 +1,16 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(build_world)
 
-# Load catkin and all dependencies required for this package
-find_package(catkin REQUIRED COMPONENTS 
-  roscpp 
-  gazebo_ros 
-)
+find_package(gazebo REQUIRED)
 
-# Depend on system install of Gazebo
 find_package(gazebo REQUIRED)
 
 link_directories(${GAZEBO_LIBRARY_DIRS})
-include_directories(${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS})
+include_directories(${GAZEBO_INCLUDE_DIRS})
 
 # include_directories(${GAZEBO_INCLUDE_DIRS})
 
 list(APPEND CMAKE_CXX_FLAGS "${GAZEBO_CXX_FLAGS}")
 
-add_library(${PROJECT_NAME} script/hello.cpp)
-target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
-
-
-catkin_package(
-  DEPENDS 
-    roscpp 
-    gazebo_ros 
-)
+add_library(${PROJECT_NAME} SHARED script/hello.cpp)
+target_link_libraries(${PROJECT_NAME}  ${GAZEBO_LIBRARIES})
